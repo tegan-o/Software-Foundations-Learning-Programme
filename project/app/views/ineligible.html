@@ -1,0 +1,32 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Not eligible – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You are not eligible
+      </h1>
+
+      <p>
+        You do not meet the eligibility requirements to receive electric vehicle charging point funding.
+      </p>
+
+      <p>You can find more information in the <a href="additional-info.html" target="_blank"> full eligibility guidance (opens in a new tab).</a> </p>
+
+    </div>
+  </div>
+
+{% endblock %}

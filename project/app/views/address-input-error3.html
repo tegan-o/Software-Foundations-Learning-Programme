@@ -1,0 +1,104 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Address look-up – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/address-input-decide" method="post">
+
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "Enter valid address line 1",
+              href: "#"
+            },
+            {
+              text: "Enter valid postcode",
+              href: "#"
+            }
+          ]
+        }) }}
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        <div class="govuk-width-container">
+            {% call govukFieldset({
+                legend: {
+                  text: "What is your address?",
+                  classes: "govuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
+              
+                {{ govukInput({
+                  label: {
+                    text: "Address line 1"
+                  },
+                  id: "address-line-1",
+                  name: "addressLine1",
+                  value: data['addressLine1'],
+                  errorMessage: {
+                    text: "Enter valid address line 1"
+                  }
+                }) }}
+              
+                {{ govukInput({
+                  label: {
+                    text: "Address line 2 (optional)"
+                  },
+                  id: "address-line-2",
+                  name: "addressLine2",
+                  value: data['addressLine2']
+                }) }}
+              
+                {{ govukInput({
+                  label: {
+                    text: "Town or city (optional)"
+                  },
+                  classes: "govuk-!-width-two-thirds",
+                  id: "address-town",
+                  name: "addressTown",
+                  value: data['addressTown']
+                }) }}
+              
+                {{ govukInput({
+                  label: {
+                    text: "Postcode"
+                  },
+                  classes: "govuk-input--width-10",
+                  id: "address-postcode",
+                  name: "addressPostcode",
+                  value: data['addressPostcode'],
+                  errorMessage: {
+                    text: "Enter valid postcode"
+                  }
+                }) }}
+              
+              {% endcall %}
+
+          {{ govukButton({
+          text: "Confirm"
+          }) }}
+          
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Vehicle Registration Number – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/vehicle-vrn-decide" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "Enter a valid Vehicle Registration Number",
+              href: "vehicle-vrn-error"
+            }
+          ]
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Enter your Vehicle Registration Number",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "For example, BD51 SMR"
+          },
+          classes: "govuk-input--width-10",
+          id: "width-10",
+          name: "vehicleVRN",
+          value: data['vehicleVRN'],
+          errorMessage: {
+            text: "Enter a valid VRN"
+          }
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

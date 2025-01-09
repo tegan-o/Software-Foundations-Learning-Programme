@@ -1,0 +1,55 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Parking availablity – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="/parking-available-decide" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "parkingAvailableAns",
+          value: data['parkingAvailableAns'],
+          fieldset: {
+            legend: {
+              text: "Is street parking generally available outside or near your home?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+         },
+          items: [
+            {
+              value: "Y",
+              text: "Yes"
+            },
+            {
+              value: "N",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

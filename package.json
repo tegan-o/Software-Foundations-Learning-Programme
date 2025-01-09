@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "@x-govuk/govuk-prototype-components": "^3.0.9"
+  },
+  "name": "asp.net-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

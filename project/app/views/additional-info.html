@@ -1,0 +1,51 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Additional information – {{ serviceName }}
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">
+        Eligibility Requirements
+      </h1>
+
+      <p>
+        This grant provides support towards the costs of the purchase and installation of EV charging
+points at residential properties when also installing a cross-pavement charging solution.
+      </p>
+      <p>
+        You can’t register for this service if you’re in the UK illegally.
+      </p>
+
+      <p>
+        To be eligible for this grant you must meet all the following criteria:
+      </p>
+      <ul class="govuk-list govuk-list--number">
+        <li>adequate on-street parking</li>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>street parking must be generally available outside or near your home</li>
+          <li>the on-street parking is legal and does not disrupt the safety or flow of vehicles
+            and pedestrians</li>
+        </ul>
+        <li>vehicle requirements</li>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>you must be the registered keeper of an eligible electric vehicle</li>
+        </ul>
+        <li>property requirements</li>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>your property must be in England, Wales, Scotland or Northern Ireland</li>
+          <li>if your property is in the Channel Islands or the Isle of Man, you will not be
+            considered eligible.</li>
+        </ul>
+      </ul>
+
+    </div>
+  </div>
+
+{% endblock %}

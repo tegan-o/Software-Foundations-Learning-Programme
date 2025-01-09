@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start – {{ serviceName }}
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        {{ serviceName }}
+      </h1>
+
+      <p>This grant provides support towards the costs of the purchase and installation of EV charging
+        points at residential properties when also installing a cross-pavement charging solution.</p>
+
+      <!--<h2 class="govuk-heading-l">Use this service to:</h2> -->
+      <h2 class="govuk-heading-m">Use this service to</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>check eligibility</li>
+        <li>submit an application</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Before you start</h2>
+
+      <p>To complete the application you will need to provide details about parking outside or near your home, your electric Vehicle Registration Number, and property address.</p>
+
+      <p>You can find more information in the <a href="additional-info.html" target="_blank"> full eligibility guidance (opens in a new tab).</a> </p>
+
+      <p>This process takes around 5 minutes.</p>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "/vehicle",
+        isStartButton: true
+      }) }}
+
+
+    </div>
+
+
+  </div>
+
+{% endblock %}

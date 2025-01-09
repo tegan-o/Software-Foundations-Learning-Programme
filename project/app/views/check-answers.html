@@ -1,0 +1,125 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Check your answers before sending your application
+      </h1>
+
+      {% set addressValue = data['addressLine1'] %}
+      {% if data['addressLine2'] %}
+      {% set addressValue = addressValue + '<br>' + data['addressLine2'] %}
+      {% endif %}
+      {% if data['addressTown'] %}
+      {% set addressValue = addressValue + '<br>' + data['addressTown'] %}
+      {% endif %}
+      {% set addressValue = addressValue + '<br>' + data['addressPostcode'] %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data['name']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/name",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: data['email']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/email",
+                  text: "Change",
+                  visuallyHiddenText: "email address"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Vehicle Registration Number"
+            },
+            value: {
+              text: data['vehicleVRN']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/vehicle-vrn",
+                  text: "Change",
+                  visuallyHiddenText: "vehicle registration number"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Home address"
+            },
+            value:{
+              html: addressValue | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: "/address-input",
+                  text: "Change",
+                  visuallyHiddenText: "home address"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Now send your application
+      </h2>
+
+      <p>
+        By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.
+      </p>
+
+      <form action="/submit" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Accept and send"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirm address – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/address-confirm-decide" method="post">
+
+      
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+      <div class="govuk-width-container">
+        <h1 class="govuk-heading-l">Confirm address</h1>
+
+        {% set address = data['addressLine1'] %}
+        {% if data['addressLine2'] %}
+        {% set address = address + '<br>' + data['addressLine2'] %}
+        {% endif %}
+        {% if data['addressTown'] %}
+        {% set address = address + '<br>' + data['addressTown'] %}
+        {% endif %}
+        {% set address = address + '<br>' + data['addressPostcode'] %}
+
+        {{ govukInsetText({ text: address | safe }) }}
+
+
+        {{ govukButton({
+          text: "Use this address"
+        }) }}
+
+        <p class="govuk-body govuk-!-margin-bottom-0"><a href="/address-input" class="govuk-link">Edit address</a></p>
+      </div>
+
+      </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}
