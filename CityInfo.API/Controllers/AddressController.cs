@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-//get rid?
 
 namespace CityInfo.API.Controllers{
 

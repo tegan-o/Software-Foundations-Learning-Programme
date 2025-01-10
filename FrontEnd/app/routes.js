@@ -181,14 +181,44 @@ router.post('/address-input-decide', function(req,res){
   else if(!l1Valid){
     res.redirect('address-input-error1')
   }
-  else if(Checking){
-    //valid and checking
-    res.redirect('/check-answers')
-  }
   else{
-    //valid and not checking answers
-    res.redirect('/address-confirm')
+    //valid
+    fetch("http://localhost:5082/api/Address", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        //successful API call
+        if(Checking){
+          //checking and valid
+          res.redirect('/check-answers')
+        }
+        else{
+          //valid and not checking answers
+          res.redirect('/address-confirm')
+        }
+
+      })
+    .catch((error) => {
+      console.error("Error:", error);
+      // Redirect to an error page or handle error logic here
+    });
   }
+
+
+  //else if(Checking){
+    //valid and checking
+    //res.redirect('/check-answers')
+  //}
+  //else{
+    //valid and not checking answers
+    //res.redirect('/address-confirm')
+  //}
 })
 
 router.post('/address-confirm-decide', function(req,res){

@@ -258,3 +258,4 @@
 /home/vagrant/Documents/ASP.NET demo/CityInfo.API/obj/Debug/net8.0/CityInfo.API.pdb
 /home/vagrant/Documents/ASP.NET demo/CityInfo.API/obj/Debug/net8.0/CityInfo.API.genruntimeconfig.cache
 /home/vagrant/Documents/ASP.NET demo/CityInfo.API/obj/Debug/net8.0/ref/CityInfo.API.dll
+/home/vagrant/Documents/ASP.NET demo/CityInfo.API/obj/Debug/net8.0/CityInfo.API.sourcelink.json
